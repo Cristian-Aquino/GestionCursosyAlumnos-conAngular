@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "1PF-Aquino": {
+    "PF-Aquino": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "1PF-Aquino:build:production"
+              "buildTarget": "PF-Aquino:build:production"
             },
             "development": {
-              "buildTarget": "1PF-Aquino:build:development"
+              "buildTarget": "PF-Aquino:build:development"
             }
           },
           "defaultConfiguration": "development"
