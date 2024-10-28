@@ -3,7 +3,7 @@
     <form [formGroup]="usuarioForm">
         <div class="row">
             <div class="col-6">
-                <mat-form-field class="example-form-field">
+                <mat-form-field class="example-form-field casilla">
                     <mat-label>Nombre</mat-label>
                     <input formControlName="nombre" matInput type="text">
                     <mat-error>
@@ -56,6 +56,6 @@
 </div>
 
 <div mat-dialog-actions>
-    <button (click)="guardar()" mat-raised-button>Guardar</button>
     <button mat-dialog-close mat-raised-button>Cancelar</button>
+    <button (click)="guardar()" mat-raised-button>Guardar</button>
 </div>

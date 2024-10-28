@@ -7,21 +7,12 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-import { UsuariosModule } from './usuarios/usuarios.module';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
-  declarations: [
-    DashboardComponent
-  ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    UsuariosModule
-  ],
+  declarations: [ DashboardComponent],
+  imports: [CommonModule, DashboardRoutingModule, MatSidenavModule, MatButtonModule, MatToolbarModule, MatIconModule,
+            MatListModule ],
   exports: [DashboardComponent]
 })
 export class DashboardModule { }

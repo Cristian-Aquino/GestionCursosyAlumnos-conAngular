@@ -1,31 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UsuarioDialogComponent } from './usuario-dialog/usuario-dialog.component';
 import { Usuario } from './modelos';
-import { filter } from 'rxjs';
-
-const ELEMENT_DATA: Usuario[] = [
-  {id: 'Av1d', nombre: 'Silvana', apellido: 'Pepita', email:'silvana_pepita@gmail.com', fecha_creado: new Date()}
-];
+import { UsuariosService } from '../../../core/servicios/usuarios.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss'
 })
-export class UsuariosComponent {
+export class UsuariosComponent implements OnInit{
   displayedColumns: string[] = ['id', 'nombre', 'email', 'fecha_creado', 'acciones'];
-  dataSource = ELEMENT_DATA;
+  dataSource: Usuario[] = [];
+  estaCargando = false;
 
-  usuario ={
-    nombre: 'Carlos',
-    apellido: 'Beltran'
+  constructor(
+    private matDialog: MatDialog, 
+    private usuariosService: UsuariosService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.cargarUsuarios();
   }
 
-  constructor(private matDialog: MatDialog) {}
+  cargarUsuarios(): void{
+    this.estaCargando = true;
+    this.usuariosService.getUsuarios().subscribe({
+      next: (usuarios) => {
+        this.dataSource = usuarios;
+      },
+      error: () => {
+        this.estaCargando = false;
+      },
+      complete: () => {
+        this.estaCargando = false;
+      }
 
-  eliminar(id: string) {
-    this.dataSource = this.dataSource.filter((usuario) => usuario.id !== id);
+    })
   }
 
   abrirModal(usuarioEditado?: Usuario): void{
@@ -37,7 +51,7 @@ export class UsuariosComponent {
 
           if(!!resultado){
             if(usuarioEditado){
-              this.dataSource = this.dataSource.map((usuario) => usuario.id === usuarioEditado.id ? {...usuario, ...resultado} : usuario)
+              this.handleActualizar(usuarioEditado.id, resultado);
             }
             else{
               this.dataSource = [...this.dataSource, resultado,]
@@ -48,5 +62,42 @@ export class UsuariosComponent {
       });
   }
 
+  handleActualizar(id: string, actualizar: Usuario): void {
+    this.estaCargando = true;
+    this.usuariosService.actualizarUsuarioPorId(id, actualizar).subscribe({
+      next: (usuarios) => {
+        this.dataSource = usuarios;
+      },
+      error: () => {
+       this.estaCargando = false; 
+      },
+      complete: () => {
+        this.estaCargando = false; 
+      }
+    })
+  }
+
+  eliminar(id: string) {
+    this.estaCargando = true;
+    this.usuariosService.removerUsuarioPorId(id).subscribe({
+      next: (usuarios) => {
+        this.dataSource = usuarios;
+      },
+      error: () => {
+       this.estaCargando = false; 
+      },
+      complete: () => {
+        this.estaCargando = false; 
+      }
+    })
+  }
+
+  mostrarDetalles(id: string): void{
+    this.router.navigate([id, 'detalle'], {relativeTo: this.activatedRoute})
+  }
+
+  
+
+  
 }
 

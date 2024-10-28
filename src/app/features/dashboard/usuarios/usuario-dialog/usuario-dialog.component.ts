@@ -8,11 +8,10 @@ interface UserDialogData{
   usuarioEditado?: Usuario;
 }
 
-
 @Component({
   selector: 'app-usuario-dialog',
   templateUrl: './usuario-dialog.component.html',
-  styles: ``
+  styleUrl: './usuario-dialog.component.scss'
 })
 export class UsuarioDialogComponent {
   

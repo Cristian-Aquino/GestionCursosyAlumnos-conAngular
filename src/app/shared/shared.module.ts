@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { UsuarioNombreCompletoPipe } from './pipes/usuario-nombre-completo.pipe';
 import { ResaltadoDirective } from './directives/resaltado.directive';
 import { RepetirDirective } from './directives/repetir.directive';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { RepetirDirective } from './directives/repetir.directive';
   ],
   exports: [
     MatButtonModule, MatIconModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatDialogModule, ReactiveFormsModule,
-    MatTableModule, UsuarioNombreCompletoPipe, ResaltadoDirective, RepetirDirective
+    MatTableModule, UsuarioNombreCompletoPipe, ResaltadoDirective, RepetirDirective, MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }
