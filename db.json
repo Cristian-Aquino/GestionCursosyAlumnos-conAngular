@@ -1,0 +1,80 @@
+{
+  "usuarios": [
+    {
+      "id": "8ec5",
+      "nombre": "Jorge",
+      "apellido": "Espinoza",
+      "email": "jesponiza@gmail.com",
+      "password": "123456",
+      "rol": "ADMIN",
+      "token": "25derghvae145tgdw5n7",
+      "fecha_creado": "2024-05-10T18:24:19.971Z"
+    },
+    {
+      "id": "QPa8",
+      "nombre": "nombre",
+      "apellido": "parrado",
+      "email": "npendiente@gmail.com",
+      "fecha_creado": "2024-11-10T18:38:25.775Z",
+      "rol": "Usuario",
+      "password": "cTMj9zYG",
+      "token": "HGrgHVMwXxSkRFcafYhA"
+    },
+    {
+      "id": "Fcna",
+      "nombre": "eJEMPLO",
+      "apellido": "UNO",
+      "email": "juno@gmail.com",
+      "fecha_creado": "2024-11-11T02:29:36.412Z",
+      "rol": "Usuario",
+      "password": "bccEFgUp",
+      "token": "CwSoZypd4xLu1nXfTZJK"
+    }
+  ],
+  "cursos": [
+    {
+      "id": "2Lms",
+      "nombre": "React JS",
+      "cantidadClases": "13",
+      "fechaCreacion": "2024-08-12T18:38:25.775Z"
+    },
+    {
+      "id": "3fSc",
+      "nombre": "Android",
+      "cantidadClases": "25",
+      "fechaCreacion": "2024-09-23T18:38:25.775Z"
+    },
+    {
+      "id": "sdK3",
+      "nombre": "Java",
+      "cantidadClases": "18",
+      "fechaCreacion": "2024-11-11T02:33:32.152Z"
+    },
+    {
+      "id": "fuMX",
+      "nombre": "HTML",
+      "cantidadClases": "9",
+      "fechaCreacion": "2024-11-11T03:07:40.297Z"
+    }
+  ],
+  "clases": [
+    {
+      "id": "3Yfa",
+      "tema": "Encriptacion JS",
+      "duracion": 2,
+      "idCurso": "2Lms"
+    },
+    {
+      "id": "9JwN",
+      "tema": "Vistas",
+      "duracion": "3",
+      "idCurso": "3fSc"
+    },
+    {
+      "id": "6qFV",
+      "tema": "Variables",
+      "duracion": 1,
+      "idCurso": "2Lms"
+    }
+  ]
+}

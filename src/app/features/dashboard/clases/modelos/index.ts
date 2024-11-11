@@ -1,5 +1,6 @@
 export interface Clase{
     id: string,
     tema: string,
-    duracion: number
+    duracion: number,
+    idCurso: string
 }

@@ -23,7 +23,10 @@ export class DetalleUsuarioComponent implements OnInit{
       next: (usuario) => {
         this.usuario = usuario;
         this.estaCargando = false;
-      }
+      },
+      error: (error) => {
+        console.log(error)
+       }
     })
   }
 }

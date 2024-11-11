@@ -4,8 +4,8 @@
       <mat-nav-list>
         <a routerLink="inicio" routerLinkActive #inicioLink="routerLinkActive" [activated]="inicioLink.isActive" mat-list-item>Inicio</a>
         <a routerLink="usuarios" routerLinkActive #usuariosLink="routerLinkActive" [activated]="usuariosLink.isActive" mat-list-item>Usuarios</a>
-        <a routerLink="clases" routerLinkActive #clasesLink="routerLinkActive" [activated]="clasesLink.isActive" mat-list-item>Clases</a>
         <a routerLink="cursos" routerLinkActive #cursosLink="routerLinkActive" [activated]="cursosLink.isActive" mat-list-item>Cursos</a>
+        <a routerLink="clases" routerLinkActive #clasesLink="routerLinkActive" [activated]="clasesLink.isActive" mat-list-item>Clases</a>
         <a (click)="logout()" mat-list-item>Cerrar Sesion</a>
       </mat-nav-list>
     </mat-drawer>
@@ -14,10 +14,18 @@
     <div class="example-sidenav-content">
         <!-- TOOLBAR -->
         <mat-toolbar class="menu-principal">
-            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
-              <mat-icon>menu</mat-icon>
-            </button>
-            <span>My App</span>
+            <div class="d-flex justify-content-between align-items-center w-100 h-100">
+              <div>
+                <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+                  <mat-icon>menu</mat-icon>
+                </button>
+                <span>Mi Aplicacion</span>
+              </div>
+
+              <!--<div *ngIf="authUsuario$ | async; let authUsuario">
+                <p>{{ authUsuario.nombre }} {{ authUsuario.apellido }}</p>
+              </div>-->
+            </div>            
         </mat-toolbar>
 
         <router-outlet/>

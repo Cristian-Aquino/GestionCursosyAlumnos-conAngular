@@ -1,47 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../features/dashboard/usuarios/modelos';
-import { delay, map, Observable, of } from 'rxjs';
+import { concatMap, delay, forkJoin, map, Observable, of } from 'rxjs';
+import { generarIdRandom } from '../../shared/funciones';
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
-let USUARIOS_DB: Usuario[] = [
-  {id: 'Av1d', nombre: 'Silvana', apellido: 'Pepita', email:'silvana_pepita@gmail.com', fecha_creado: new Date()}
-];
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
 
-  constructor() { }
+  private baseURL = environment.ApiBaseURL;
+
+  constructor(private httpClient: HttpClient) {}
 
   getUsuarios(): Observable<Usuario[]>{
-    return new Observable((observer) => {
 
-      setInterval(() => {
-        observer.next(USUARIOS_DB);
-        observer.complete();
-      }, 3000);
-    })
+    return this.httpClient.get<Usuario[]>(`${this.baseURL}/usuarios`)
   }
 
   getById(id: string): Observable<Usuario | undefined>{
-    return this.getUsuarios().pipe(map((usuarios) => usuarios.find((usuario) => usuario.id === id)));
+    return this.httpClient.get<Usuario>(`${this.baseURL}/usuarios/${id}`);
   }
 
   actualizarUsuarioPorId(id: string, actualizar: Partial<Usuario>){
-    USUARIOS_DB = USUARIOS_DB.map((usuario) => usuario.id === id ? {...usuario, ...actualizar} : usuario)
-
-    return new Observable<Usuario[]>((observer) => {
-
-      setInterval(() => {
-        observer.next(USUARIOS_DB);
-        observer.complete();
-      }, 1000);
-    })
+    
+    return this.httpClient.patch<Usuario>(`${this.baseURL}/usuarios/${id}`, actualizar).pipe(concatMap(
+      () => this.getUsuarios()));
   }
 
   removerUsuarioPorId(id: string): Observable<Usuario[]>{
-    USUARIOS_DB = USUARIOS_DB.filter((usuario) => usuario.id != id);
-    return of(USUARIOS_DB).pipe(delay(1000))
+    return this.httpClient.delete<Usuario>(`${this.baseURL}/usuarios/${id}`).pipe(concatMap(
+      () => this.getUsuarios()));
+  }
+
+  crearUsuario(data: Omit<Usuario, 'id'>): Observable<Usuario> {
+    return this.httpClient.post<Usuario>(`${this.baseURL}/usuarios`, {
+      ...data,
+      rol: "Usuario",
+      password: generarIdRandom(8),
+      token: generarIdRandom(20),
+      fecha_creado: new Date().toISOString(),
+    })
   }
   
 }

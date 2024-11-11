@@ -19,7 +19,8 @@ export class CursosDialogComponent {
   constructor(private matDialogRef: MatDialogRef<CursosDialogComponent>, private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data?: CursoDialogData){
     this.cursoForm = this.formBuilder.group({
-      nombre: [null, [Validators.required]]
+      nombre: [null, [Validators.required]],
+      cantidadClases: [null, [Validators.required]],
     });
     this.patchFormValue();
   }

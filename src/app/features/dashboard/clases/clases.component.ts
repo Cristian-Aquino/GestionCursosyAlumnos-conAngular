@@ -43,7 +43,13 @@ export class ClasesComponent implements OnInit{
             }
             else{
               this.clases = [...this.clases, resultado,];
-              this.clasesServicio.crearClase(resultado);
+              this.clasesServicio.crearClase(resultado).subscribe({
+                next: () => this.cargarClases(),
+                error: (error) => {
+                  console.log(error);
+                }
+              });
+              
             }
             
           }

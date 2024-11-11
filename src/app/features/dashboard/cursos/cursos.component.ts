@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './cursos.component.scss'
 })
 export class CursosComponent implements OnInit{
-  displayedColumns = ['id', 'nombre', 'fechaCreacion', 'acciones'];
+  displayedColumns = ['id', 'nombre', 'cantidadClases', 'fechaCreacion', 'acciones'];
   cursos: Curso[] = []
 
   constructor(
@@ -26,7 +26,10 @@ export class CursosComponent implements OnInit{
     this.cursosServicio.getCursos().subscribe({
       next: (cursos) => {
         this.cursos = cursos;
-      }
+      },
+      error: (error) => {
+        console.log(error)
+       }
     })
   }
 
@@ -41,24 +44,25 @@ export class CursosComponent implements OnInit{
             }
             else{
               this.cursos = [...this.cursos, resultado,];
-              this.cursosServicio.crearCurso(resultado);
+              this.cursosServicio.crearCurso(resultado).subscribe({
+                next: () => this.cargarCursos()
+              });
             }
           }
-        }
+        },
+        error: (error) => {
+          console.log(error)
+         }
       });
   }
 
   handleActualizar(id: string, actualizar: Curso): void {
-    //this.estaCargando = true;
     this.cursosServicio.actualizarCursoPorId(id, actualizar).subscribe({
       next: (cursos) => {
         this.cursos = cursos;
       },
-      error: () => {
-       //this.estaCargando = false; 
-      },
-      complete: () => {
-        //this.estaCargando = false; 
+      error: (error) => {
+       console.log(error)
       }
     })
   }
@@ -68,9 +72,8 @@ export class CursosComponent implements OnInit{
       next: (cursos) => {
         this.cursos = cursos;
       },
-      error: () => {
-      },
-      complete: () => {
+      error: (error) => {
+        console.log(error)
       }
     })
   }

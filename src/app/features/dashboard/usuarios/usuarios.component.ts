@@ -54,11 +54,16 @@ export class UsuariosComponent implements OnInit{
               this.handleActualizar(usuarioEditado.id, resultado);
             }
             else{
-              this.dataSource = [...this.dataSource, resultado,]
+              this.usuariosService.crearUsuario(resultado).subscribe({
+                next: () => this.cargarUsuarios()
+              });
             }
             
           }
-        }
+        },
+        error: (error) => {
+          console.log(error)
+         }
       });
   }
 
