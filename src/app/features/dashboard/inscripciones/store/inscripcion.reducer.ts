@@ -91,6 +91,12 @@ export const reducer = createReducer(
       cursosOptions: [...CURSOS_DB]
     }
   }),
+  on(InscripcionActions.cargarAlumnosOptions, (state) => {
+    return {
+      ...state,
+      usuariosOptions: [...USUARIOS_DB]
+    }
+  }),
   on(InscripcionActions.crearInscripcion, (state, action) => {
     return {
       ...state,
