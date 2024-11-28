@@ -18,5 +18,21 @@
     <button type="submit" mat-flat-button>Inscribir</button>
 </form>
 
+@if(estaCargandoInscripciones$ | async){
+    <mat-spinner></mat-spinner>
+}
+@else {
+    @if(cargarInscripcinesError$ | async; as error){
+        <h2>Ocurrio un error al cargar</h2>
+        <p>{{ error['message'] }}</p>
+        <pre>{{ inscripciones$ | async |json}}</pre>
+    }
+    @else {
+        <pre>{{ inscripciones$ | async |json}}</pre>
+    }
+}
 
-<pre>{{ inscripciones$ | async |json}}</pre>
+
+
+
+

@@ -66,12 +66,16 @@ const USUARIOS_DB: Usuario[] = [
 ]
 
 export interface State {
+  estaCargandoInscripciones: boolean;
+  cargarInscripcionesError: Error | null,
   inscripciones: Inscripcion[];
   cursosOptions: Curso[];
   usuariosOptions: Usuario[];
 }
 
 export const initialState: State = {
+  estaCargandoInscripciones: false,
+  cargarInscripcionesError: null,
   inscripciones: [],
   cursosOptions: [],
   usuariosOptions: [],
@@ -82,7 +86,24 @@ export const reducer = createReducer(
   on(InscripcionActions.cargarInscripcions, state => {
     return {
       ...state,
+      estaCargandoInscripciones: true,
       inscripciones: [...INCRIPCIONES_DB]
+    }
+  }),
+  on(InscripcionActions.cargarInscripcionsSuccess, (state, action) => {
+    return {
+      ...state,
+      inscripciones: action.data,
+      cargarInscripcionesError: null,
+      estaCargandoInscripciones: false
+    }
+  }),
+  on(InscripcionActions.cargarInscripcionsFailure, (state, action) => {
+    return {
+      ...state,
+      ...initialState,
+      cargarInscripcionesError: action.data
+      
     }
   }),
   on(InscripcionActions.cargarCursosOptions, (state) => {

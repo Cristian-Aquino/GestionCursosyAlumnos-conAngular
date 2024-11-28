@@ -76,5 +76,12 @@
       "duracion": 1,
       "idCurso": "2Lms"
     }
+  ],
+  "inscripciones": [
+    {
+      "id": "cd3a",
+      "idCurso": "QPa8",
+      "idUsuario": "sdK3"
+    }
   ]
 }

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { InscripcionActions } from './store/inscripcion.actions';
 import { Observable } from 'rxjs';
 import { Inscripcion } from './store/modelos';
-import { selectCursoOptions, selectInscripciones, selectUsuarioOptions } from './store/inscripcion.selectors';
+import { selectCargarInscripcionesError, selectCursoOptions, selectEstaCargandoInscripciones, selectInscripciones, selectUsuarioOptions } from './store/inscripcion.selectors';
 import { Curso } from '../cursos/modelos';
 import { Usuario } from '../usuarios/modelos';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,6 +17,8 @@ export class InscripcionesComponent implements OnInit{
   inscripciones$: Observable<Inscripcion[]>;
   cursosOptions$: Observable<Curso[]>;
   usuariosOptions$: Observable<Usuario[]>;
+  cargarInscripcinesError$: Observable<Error | null>;
+  estaCargandoInscripciones$: Observable<boolean>;
 
   inscripcionForm: FormGroup;
 
@@ -30,6 +32,8 @@ export class InscripcionesComponent implements OnInit{
     this.inscripciones$ = this.store.select(selectInscripciones)
     this.cursosOptions$ = this.store.select(selectCursoOptions)
     this.usuariosOptions$ = this.store.select(selectUsuarioOptions)
+    this.estaCargandoInscripciones$ = this.store.select(selectEstaCargandoInscripciones)
+    this.cargarInscripcinesError$ = this.store.select(selectCargarInscripcionesError)
   }
   
   ngOnInit(): void {
