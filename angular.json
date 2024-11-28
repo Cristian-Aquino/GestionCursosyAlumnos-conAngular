@@ -117,6 +117,7 @@
   "cli": {
     "schematicCollections": [
       "@ngrx/schematics"
-    ]
+    ],
+    "analytics": "64cc10df-c9aa-42a2-b222-1d9a9fe26b96"
   }
 }

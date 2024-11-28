@@ -1,13 +1,21 @@
-<form>
+<form [formGroup]="inscripcionForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
         <mat-label>Curso</mat-label>
-        <mat-select></mat-select>
+        <mat-select formControlName="idCurso">
+            <mat-option [value]="curso.id" *ngFor="let curso of cursosOptions$ | async">
+                {{ curso.nombre }}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Alumno</mat-label>
-        <mat-select></mat-select>
+        <mat-select formControlName="idUsuario">
+            <mat-option [value]="usuario.id" *ngFor="let usuario of usuariosOptions$ | async">
+                {{ usuario.nombre }} {{ usuario.apellido }}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
-    <button mat-flat-button>Inscribir</button>
+    <button type="submit" mat-flat-button>Inscribir</button>
 </form>
 
 

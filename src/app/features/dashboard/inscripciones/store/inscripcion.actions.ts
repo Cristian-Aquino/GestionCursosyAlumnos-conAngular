@@ -6,6 +6,6 @@ export const InscripcionActions = createActionGroup({
     'Cargar Inscripcions': emptyProps(),
     'Cargar Cursos Options': emptyProps(),
     'Cargar Alumnos Options': emptyProps(),
-    
+    'Crear Inscripcion': props<{idCurso: string, idUsuario: string}>(),
   }
 });

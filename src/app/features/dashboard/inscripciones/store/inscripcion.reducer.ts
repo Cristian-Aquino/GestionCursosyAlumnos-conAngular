@@ -3,6 +3,7 @@ import { InscripcionActions } from './inscripcion.actions';
 import { Inscripcion } from './modelos';
 import { Curso } from '../../cursos/modelos';
 import { Usuario } from '../../usuarios/modelos';
+import { generarIdRandom } from '../../../../shared/funciones';
 
 export const inscripcionFeatureKey = 'inscripcion';
 
@@ -89,8 +90,14 @@ export const reducer = createReducer(
       ...state,
       cursosOptions: [...CURSOS_DB]
     }
-  })
-
+  }),
+  on(InscripcionActions.crearInscripcion, (state, action) => {
+    return {
+      ...state,
+      inscripciones: [...state.inscripciones, {id: generarIdRandom(4), idCurso: action.idCurso, idUsuario: action.idUsuario}]
+    }
+  }),
+  
 );
 
 export const inscripcionFeature = createFeature({
