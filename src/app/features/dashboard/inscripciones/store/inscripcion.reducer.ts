@@ -39,29 +39,29 @@ const USUARIOS_DB: Usuario[] = [
     apellido: "Espinoza",
     email: "jesponiza@gmail.com",
     password: "123456",
-    rol: "ADMIN",
     token: "25derghvae145tgdw5n7",
-    fecha_creado: new Date()
+    fecha_creado: new Date(),
+    rol: "ADMIN"
   },
   {
     id: "QPa8",
     nombre: "nombre",
     apellido: "parrado",
     email: "npendiente@gmail.com",
-    fecha_creado: new Date(),
-    rol: "Usuario",
     password: "cTMj9zYG",
-    token: "HGrgHVMwXxSkRFcafYhA"
+    token: "HGrgHVMwXxSkRFcafYhA",
+    fecha_creado: new Date(),
+    rol: "Usuario"
   },
   {
     id: "Fcna",
     nombre: "eJEMPLO",
     apellido: "UNO",
     email: "juno@gmail.com",
-    fecha_creado: new Date(),
-    rol: "Usuario",
     password: "bccEFgUp",
-    token: "CwSoZypd4xLu1nXfTZJK"
+    token: "CwSoZypd4xLu1nXfTZJK",
+    fecha_creado: new Date(),
+    rol: "Usuario"
   },
 ]
 
