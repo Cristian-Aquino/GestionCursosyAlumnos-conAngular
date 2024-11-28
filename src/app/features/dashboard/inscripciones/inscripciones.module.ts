@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { InscripcionEffects } from './store/inscripcion.effects';
 import { StoreModule } from '@ngrx/store';
 import { inscripcionFeature } from './store/inscripcion.reducer';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { inscripcionFeature } from './store/inscripcion.reducer';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     InscripcionesRoutingModule,
     StoreModule.forFeature(inscripcionFeature),
     EffectsModule.forFeature([InscripcionEffects])

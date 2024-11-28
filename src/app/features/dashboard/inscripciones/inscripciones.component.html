@@ -1,1 +1,14 @@
-<p>inscripciones works!</p>
+<form>
+    <mat-form-field>
+        <mat-label>Curso</mat-label>
+        <mat-select></mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Alumno</mat-label>
+        <mat-select></mat-select>
+    </mat-form-field>
+    <button mat-flat-button>Inscribir</button>
+</form>
+
+
+<pre>{{ inscripciones$ | async |json}}</pre>
