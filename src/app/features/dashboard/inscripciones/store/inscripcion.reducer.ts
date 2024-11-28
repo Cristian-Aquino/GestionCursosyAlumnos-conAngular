@@ -62,7 +62,7 @@ const USUARIOS_DB: Usuario[] = [
     rol: "Usuario",
     password: "bccEFgUp",
     token: "CwSoZypd4xLu1nXfTZJK"
-  }
+  },
 ]
 
 export interface State {
