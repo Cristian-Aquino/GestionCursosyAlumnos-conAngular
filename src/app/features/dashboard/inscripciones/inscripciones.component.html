@@ -38,14 +38,14 @@
             <!-- Name Column -->
             <ng-container matColumnDef="nombreCurso">
               <th mat-header-cell *matHeaderCellDef> Nombre Curso</th>
-              <td mat-cell *matCellDef="let usuario"> {{ usuario | usuarioNombreCompleto }} </td>
+              <td mat-cell *matCellDef="let inscripcion"> {{ inscripcion.curso.nombre  }} </td>
             </ng-container>
           
             <!-- Weight Column -->
             <ng-container matColumnDef="nombreAlumno">
               <th mat-header-cell *matHeaderCellDef> nombre Alumno </th>
               <!--<td color="orange" appResaltado mat-cell *matCellDef="let usuario"> {{usuario.email}} </td>-->
-              <td mat-cell *matCellDef="let usuario"> {{usuario.email}} </td>
+              <td mat-cell *matCellDef="let inscripcion"> {{inscripcion.usuario | usuarioNombreCompleto}} </td>
             </ng-container>
           
             <!-- Acciones Column -->

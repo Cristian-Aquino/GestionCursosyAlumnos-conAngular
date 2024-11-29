@@ -7,6 +7,7 @@ import { selectCargarInscripcionesError, selectCursoOptions, selectEstaCargandoI
 import { Curso } from '../cursos/modelos';
 import { Usuario } from '../usuarios/modelos';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { InscripcionesService } from '../../../core/servicios/inscripciones.service';
 
 @Component({
   selector: 'app-inscripciones',
@@ -14,7 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './inscripciones.component.scss'
 })
 export class InscripcionesComponent implements OnInit{
-  inscripciones$: Observable<Inscripcion[]>;
+  inscripciones$: Observable<Inscripcion[] | null>;
   cursosOptions$: Observable<Curso[]>;
   usuariosOptions$: Observable<Usuario[]>;
   cargarInscripcinesError$: Observable<Error | null>;
@@ -25,8 +26,7 @@ export class InscripcionesComponent implements OnInit{
   dataSource: Inscripcion[] = [];
   estaCargando = false;
 
-
-  constructor(private store: Store, private formBuilder: FormBuilder){
+  constructor(private store: Store, private formBuilder: FormBuilder, private inscripcionServicio: InscripcionesService){
 
     this.inscripcionForm = this.formBuilder.group({
       cursoId: [null, [Validators.required]],
@@ -37,6 +37,18 @@ export class InscripcionesComponent implements OnInit{
     this.usuariosOptions$ = this.store.select(selectUsuarioOptions)
     this.estaCargandoInscripciones$ = this.store.select(selectEstaCargandoInscripciones)
     this.cargarInscripcinesError$ = this.store.select(selectCargarInscripcionesError)
+
+    this.inscripcionServicio.getInscripciones().subscribe({
+      next: (inscripcion) => {
+        this.dataSource = inscripcion;
+      },
+      error: () => {
+        this.estaCargando = false;
+      },
+      complete: () => {
+        this.estaCargando = false;
+      }
+    })
   }
   
   ngOnInit(): void {
