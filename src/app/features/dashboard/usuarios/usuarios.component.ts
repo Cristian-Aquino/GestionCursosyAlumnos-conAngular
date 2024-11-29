@@ -13,9 +13,11 @@ import { Observable } from 'rxjs';
   styleUrl: './usuarios.component.scss'
 })
 export class UsuariosComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'nombre', 'email', 'fecha_creado', 'acciones'];
+  columnasTablaUsuarios: string[] = ['id', 'nombre', 'email', 'rol','fecha_creado', 'acciones'];
+  columnasTablaAlumnos: string[] = ['id', 'nombre', 'email', 'fecha_creado', 'acciones'];
   dataSource: Usuario[] = [];
   estaCargando = false;
+  esAdmin = false;
 
   authUsuario$: Observable<Usuario | null>
 
@@ -30,12 +32,28 @@ export class UsuariosComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.cargarUsuarios();
+      this.cargarUsuarios();
   }
 
   cargarUsuarios(): void{
     this.estaCargando = true;
     this.usuariosService.getUsuarios().subscribe({
+      next: (usuarios) => {
+        this.dataSource = usuarios;
+      },
+      error: () => {
+        this.estaCargando = false;
+      },
+      complete: () => {
+        this.estaCargando = false;
+      }
+
+    })
+  }
+
+  cargarAlumnos(): void{
+    this.estaCargando = true;
+    this.usuariosService.getAlumnos().subscribe({
       next: (usuarios) => {
         this.dataSource = usuarios;
       },

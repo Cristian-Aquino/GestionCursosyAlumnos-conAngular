@@ -16,8 +16,11 @@ export class UsuariosService {
   constructor(private httpClient: HttpClient) {}
 
   getUsuarios(): Observable<Usuario[]>{
-
     return this.httpClient.get<Usuario[]>(`${this.baseURL}/usuarios`)
+  }
+
+  getAlumnos(): Observable<Usuario[]>{
+    return this.httpClient.get<Usuario[]>(`${this.baseURL}/usuarios?rol=Alumno`)
   }
 
   getById(id: string): Observable<Usuario | undefined>{

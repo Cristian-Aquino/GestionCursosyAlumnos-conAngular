@@ -1,22 +1,4 @@
-<form [formGroup]="inscripcionForm" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-        <mat-label>Curso</mat-label>
-        <mat-select formControlName="cursoId">
-            <mat-option [value]="curso.id" *ngFor="let curso of cursosOptions$ | async">
-                {{ curso.nombre }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Alumno</mat-label>
-        <mat-select formControlName="usuarioId">
-            <mat-option [value]="usuario.id" *ngFor="let usuario of usuariosOptions$ | async">
-                {{ usuario.nombre }} {{ usuario.apellido }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <button type="submit" mat-flat-button>Inscribir</button>
-</form>
+
 
 @if(estaCargandoInscripciones$ | async){
     <mat-spinner></mat-spinner>
@@ -27,6 +9,10 @@
         <p>{{ error['message'] }}</p>
     }
     @else {
+        <button mat-raised-button (click)="abrirModal()">
+            <mat-icon>add</mat-icon>
+            Realizar una inscripcion
+        </button>
         <h2>Tabla Inscripciones</h2>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <!-- Position Column -->

@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Inscribir un Alumno</h1>
+<div mat-dialog-content>
+    <div>
+        <form [formGroup]="inscripcionForm">
+            <mat-form-field>
+                <mat-label>Curso</mat-label>
+                <mat-select formControlName="cursoId">
+                    <mat-option [value]="curso.id" *ngFor="let curso of cursosOptions$ | async">
+                        {{ curso.nombre }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Alumno</mat-label>
+                <mat-select formControlName="usuarioId">
+                    <mat-option [value]="usuario.id" *ngFor="let usuario of usuariosOptions$ | async">
+                        {{ usuario.nombre }} {{ usuario.apellido }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-dialog-close mat-raised-button>Cancelar</button>
+    <button (click)="guardar()" mat-raised-button>Guardar</button>
+</div>

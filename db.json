@@ -22,14 +22,105 @@
     },
     {
       "id": "Fcna",
-      "nombre": "eJEMPLO",
-      "apellido": "UNO",
-      "email": "juno@gmail.com",
+      "nombre": "Federico",
+      "apellido": "Unitario",
+      "email": "funitario@gmail.com",
       "fecha_creado": "2024-11-11T02:29:36.412Z",
-      "rol": "Usuario",
+      "rol": "Alumno",
       "password": "bccEFgUp",
-      "token": "CwSoZypd4xLu1nXfTZJK"
+      "token": "2AkJL3PDgQStUfPUfMvQ"
+    },
+
+    {
+      "id": "y17B",
+      "nombre": "Lucas",
+      "apellido": "Fabula",
+      "email": "lfabula@gmail.com",
+      "fecha_creado": "2022-01-11T02:29:36.412Z",
+      "rol": "Alumno",
+      "password": "KPUvCy2Bi1",
+      "token": "eCDyfbqncKfRkASvgcmx"
+    },
+
+    {
+      "id": "75pn",
+      "nombre": "Jose",
+      "apellido": "Artigas",
+      "email": "fartigas@gmail.com",
+      "fecha_creado": "2024-05-01T02:29:36.412Z",
+      "rol": "Alumno",
+      "password": "kMVHceWhUe",
+      "token": "YejYzH5Q4vAawq8EY3Kk"
+    },
+
+    {
+      "id": "9E8V",
+      "nombre": "Martina",
+      "apellido": "Soledad",
+      "email": "msoledad@gmail.com",
+      "fecha_creado": "2024-09-20T02:29:36.412Z",
+      "rol": "Alumno",
+      "password": "XXaXKPxcHg",
+      "token": "YdfkHL1WTzWMV4kR6WQp"
+    },
+
+    {
+      "id": "a9JH",
+      "nombre": "Gisela",
+      "apellido": "Perez",
+      "email": "gperez@gmail.com",
+      "fecha_creado": "2023-02-15T02:29:36.412Z",
+      "rol": "Alumno",
+      "password": "89BXgjn3YY",
+      "token": "3vYJNqcVJe0Uw7vVK35z"
+    },
+
+    {
+      "id": "k7un",
+      "nombre": "Martin",
+      "apellido": "Guzman",
+      "email": "mguzman@gmail.com",
+      "fecha_creado": "2024-11-11T02:29:36.412Z",
+      "rol": "Alumno",
+      "password": "gHndd1LK1m",
+      "token": "D7VJpQq6Fid3jWHd148K"
+    },
+
+    {
+      "id": "0Mtg",
+      "nombre": "Alexis",
+      "apellido": "Bueno",
+      "email": "abueno@gmail.com",
+      "fecha_creado": "2024-08-25T02:29:36.412Z",
+      "rol": "Alumno",
+      "password": "iZxQCz8V01",
+      "token": "K7Y0BzSxtJGcwCAnb5yR"
+    },
+
+    {
+      "id": "wNmy",
+      "nombre": "Luz",
+      "apellido": "Mena",
+      "email": "lmena@gmail.com",
+      "fecha_creado": "2024-11-11T02:29:36.412Z",
+      "rol": "Alumno",
+      "password": "zcdPGci2u3",
+      "token": "J9gTaqMFdF6VUtmKGpnD"
+    },
+
+    {
+      "id": "ZFaT",
+      "nombre": "Arturo",
+      "apellido": "Godin",
+      "email": "agodin@gmail.com",
+      "fecha_creado": "2024-11-11T02:29:36.412Z",
+      "rol": "Alumno",
+      "password": "kMVHceWhUe",
+      "token": "BvfUtPi4kxUPCjE0FJXp"
     }
+
+
+
   ],
   "cursos": [
     {
@@ -82,31 +173,6 @@
       "id": "cd3a",
       "cursoId": "3fSc",
       "usuarioId": "Fcna"
-    },
-    {
-      "id": "9b1e",
-      "cursoId": "sdK3",
-      "usuarioId": "QPa8"
-    },
-    {
-      "id": "637a",
-      "cursoId": "3fSc",
-      "usuarioId": "Fcna"
-    },
-    {
-      "id": "9212",
-      "cursoId": "2Lms",
-      "usuarioId": "8ec5"
-    },
-    {
-      "id": "db7b",
-      "cursoId": "sdK3",
-      "usuarioId": "QPa8"
-    },
-    {
-      "id": "6aef",
-      "cursoId": "fuMX",
-      "usuarioId": "8ec5"
     }
   ]
 }

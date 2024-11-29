@@ -8,11 +8,13 @@ import { InscripcionEffects } from './store/inscripcion.effects';
 import { StoreModule } from '@ngrx/store';
 import { inscripcionFeature } from './store/inscripcion.reducer';
 import { SharedModule } from '../../../shared/shared.module';
+import { InscripcionesDialogComponent } from './inscripciones-dialog/inscripciones-dialog.component';
 
 
 @NgModule({
   declarations: [
-    InscripcionesComponent
+    InscripcionesComponent,
+    InscripcionesDialogComponent
   ],
   imports: [
     CommonModule,

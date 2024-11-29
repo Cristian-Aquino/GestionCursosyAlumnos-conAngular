@@ -13,8 +13,7 @@ interface UserDialogData{
   templateUrl: './usuario-dialog.component.html',
   styleUrl: './usuario-dialog.component.scss'
 })
-export class UsuarioDialogComponent {
-  
+export class UsuarioDialogComponent{
   usuarioForm: FormGroup;
 
   constructor(private matDialogRef: MatDialogRef<UsuarioDialogComponent>, private formBuilder: FormBuilder,

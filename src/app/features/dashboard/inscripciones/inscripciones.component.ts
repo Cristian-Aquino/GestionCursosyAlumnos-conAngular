@@ -8,6 +8,8 @@ import { Curso } from '../cursos/modelos';
 import { Usuario } from '../usuarios/modelos';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InscripcionesService } from '../../../core/servicios/inscripciones.service';
+import { InscripcionesDialogComponent } from './inscripciones-dialog/inscripciones-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-inscripciones',
@@ -26,7 +28,7 @@ export class InscripcionesComponent implements OnInit{
   dataSource: Inscripcion[] = [];
   estaCargando = false;
 
-  constructor(private store: Store, private formBuilder: FormBuilder, private inscripcionServicio: InscripcionesService){
+  constructor(private store: Store, private formBuilder: FormBuilder, private inscripcionServicio: InscripcionesService, private matDialog: MatDialog,){
 
     this.inscripcionForm = this.formBuilder.group({
       cursoId: [null, [Validators.required]],
@@ -51,6 +53,21 @@ export class InscripcionesComponent implements OnInit{
     })
   }
   
+
+  cargarInscripciones(): void{
+    this.inscripcionServicio.getInscripciones().subscribe({
+      next: (inscripcion) => {
+        this.dataSource = inscripcion;
+      },
+      error: () => {
+        this.estaCargando = false;
+      },
+      complete: () => {
+        this.estaCargando = false;
+      }
+    })
+  }
+
   ngOnInit(): void {
     this.store.dispatch(InscripcionActions.cargarInscripcions());
     this.store.dispatch(InscripcionActions.cargarCursosYAlumnosOptions());
@@ -64,5 +81,24 @@ export class InscripcionesComponent implements OnInit{
       this.store.dispatch(InscripcionActions.crearInscripcion(this.inscripcionForm.value))
       this.inscripcionForm.reset();
     }
+  }
+
+  abrirModal(usuarioEditado?: Usuario): void{
+    this.matDialog.open(InscripcionesDialogComponent, {data: {usuarioEditado,}},)
+      .afterClosed()
+      .subscribe({
+        next: (resultado) => {
+          console.log('Recibimos: ', resultado);
+
+          if(!!resultado){
+              this.inscripcionServicio.crearInscripcion(resultado).subscribe({
+                next: () => this.cargarInscripciones()
+              });
+          }
+        },
+        error: (error) => {
+          console.log(error)
+         }
+      });
   }
 }
