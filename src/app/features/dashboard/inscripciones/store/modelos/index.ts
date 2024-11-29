@@ -3,8 +3,8 @@ import { Usuario } from "../../../usuarios/modelos";
 
 export interface Inscripcion{
     id: string,
-    idUsuario: string,
-    idCurso: string,
+    cursoId: string,
+    usuarioId: string,
     usuario?: Usuario,
     curso?: Curso
 }

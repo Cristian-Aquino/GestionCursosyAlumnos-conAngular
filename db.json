@@ -12,9 +12,9 @@
     },
     {
       "id": "QPa8",
-      "nombre": "nombre",
-      "apellido": "parrado",
-      "email": "npendiente@gmail.com",
+      "nombre": "Ignacio",
+      "apellido": "Parrado",
+      "email": "iparradp@gmail.com",
       "fecha_creado": "2024-11-10T18:38:25.775Z",
       "rol": "Usuario",
       "password": "cTMj9zYG",
@@ -80,8 +80,28 @@
   "inscripciones": [
     {
       "id": "cd3a",
-      "idCurso": "QPa8",
-      "idUsuario": "sdK3"
+      "cursoId": "3fSc",
+      "usuarioId": "Fcna"
+    },
+    {
+      "id": "9b1e",
+      "cursoId": "sdK3",
+      "usuarioId": "QPa8"
+    },
+    {
+      "id": "637a",
+      "cursoId": "3fSc",
+      "usuarioId": "Fcna"
+    },
+    {
+      "id": "9212",
+      "cursoId": "2Lms",
+      "usuarioId": "8ec5"
+    },
+    {
+      "id": "db7b",
+      "cursoId": "sdK3",
+      "usuarioId": "QPa8"
     }
   ]
 }

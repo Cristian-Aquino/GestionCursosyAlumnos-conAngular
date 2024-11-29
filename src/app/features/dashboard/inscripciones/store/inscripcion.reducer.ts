@@ -6,11 +6,7 @@ import { Usuario } from '../../usuarios/modelos';
 import { generarIdRandom } from '../../../../shared/funciones';
 
 export const inscripcionFeatureKey = 'inscripcion';
-
-const INCRIPCIONES_DB: Inscripcion[] = [{id:"reaf",idUsuario:"45fa",idCurso:"dasr",},
-  {id:"fasd",idUsuario:"s54f",idCurso:"1da5",}
-]
-
+/*
 const CURSOS_DB: Curso[] = [
   {
     id: "2Lms",
@@ -64,7 +60,7 @@ const USUARIOS_DB: Usuario[] = [
     rol: "Usuario"
   },
 ]
-
+*/
 export interface State {
   estaCargandoInscripciones: boolean;
   cargarInscripcionesError: Error | null,
@@ -83,11 +79,16 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
+  on(InscripcionActions.crearInscripcion, state => {
+    return {
+      ...state,
+      estaCargandoInscripciones: true,
+    }
+  }),
   on(InscripcionActions.cargarInscripcions, state => {
     return {
       ...state,
       estaCargandoInscripciones: true,
-      inscripciones: [...INCRIPCIONES_DB]
     }
   }),
   on(InscripcionActions.cargarInscripcionsSuccess, (state, action) => {
@@ -106,6 +107,30 @@ export const reducer = createReducer(
       
     }
   }),
+  on(InscripcionActions.cargarCursosYAlumnosOptions, (state) => {
+    return {
+      ...state,
+      estaCargandoInscripciones: true,
+
+    }
+  }),
+  on(InscripcionActions.cargarCursosYAlumnosOptionsSucces, (state, action) => {
+    return {
+      ...state,
+      estaCargandoInscripciones: false,
+      cargarInscripcionesError: null,
+      cursosOptions: action.cursos,
+      usuariosOptions: action.usuarios
+    }
+  }),
+  on(InscripcionActions.cargarCursosYAlumnosOptionsFailure, (state, {error}) => {
+    return {
+      ...state,
+      estaCargandoInscripciones: false,
+      cargarInscripcionesError: error,
+    }
+  })
+  /*
   on(InscripcionActions.cargarCursosOptions, (state) => {
     return {
       ...state,
@@ -121,10 +146,10 @@ export const reducer = createReducer(
   on(InscripcionActions.crearInscripcion, (state, action) => {
     return {
       ...state,
-      inscripciones: [...state.inscripciones, {id: generarIdRandom(4), idCurso: action.idCurso, idUsuario: action.idUsuario}]
+      inscripciones: [...state.inscripciones, {id: generarIdRandom(4), cursoId: action.cursoId, usuarioId: action.usuarioId}]
     }
   }),
-  
+  */
 );
 
 export const inscripcionFeature = createFeature({

@@ -4,6 +4,8 @@ import { UsuarioDialogComponent } from './usuario-dialog/usuario-dialog.componen
 import { Usuario } from './modelos';
 import { UsuariosService } from '../../../core/servicios/usuarios.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../../core/servicios/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-usuarios',
@@ -15,12 +17,17 @@ export class UsuariosComponent implements OnInit{
   dataSource: Usuario[] = [];
   estaCargando = false;
 
+  authUsuario$: Observable<Usuario | null>
+
   constructor(
     private matDialog: MatDialog, 
     private usuariosService: UsuariosService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private authServicio: AuthService
+  ) {
+    this.authUsuario$ = this.authServicio.authUsuario$;
+  }
 
   ngOnInit(): void {
     this.cargarUsuarios();
@@ -58,7 +65,6 @@ export class UsuariosComponent implements OnInit{
                 next: () => this.cargarUsuarios()
               });
             }
-            
           }
         },
         error: (error) => {
@@ -100,9 +106,5 @@ export class UsuariosComponent implements OnInit{
   mostrarDetalles(id: string): void{
     this.router.navigate([id, 'detalle'], {relativeTo: this.activatedRoute})
   }
-
-  
-
-  
 }
 

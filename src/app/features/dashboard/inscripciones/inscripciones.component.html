@@ -1,7 +1,7 @@
 <form [formGroup]="inscripcionForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
         <mat-label>Curso</mat-label>
-        <mat-select formControlName="idCurso">
+        <mat-select formControlName="cursoId">
             <mat-option [value]="curso.id" *ngFor="let curso of cursosOptions$ | async">
                 {{ curso.nombre }}
             </mat-option>
@@ -9,7 +9,7 @@
     </mat-form-field>
     <mat-form-field>
         <mat-label>Alumno</mat-label>
-        <mat-select formControlName="idUsuario">
+        <mat-select formControlName="usuarioId">
             <mat-option [value]="usuario.id" *ngFor="let usuario of usuariosOptions$ | async">
                 {{ usuario.nombre }} {{ usuario.apellido }}
             </mat-option>
@@ -25,10 +25,48 @@
     @if(cargarInscripcinesError$ | async; as error){
         <h2>Ocurrio un error al cargar</h2>
         <p>{{ error['message'] }}</p>
-        <pre>{{ inscripciones$ | async |json}}</pre>
     }
     @else {
-        <pre>{{ inscripciones$ | async |json}}</pre>
+        <h2>Tabla Inscripciones</h2>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> Id </th>
+              <td mat-cell *matCellDef="let inscripcion"> {{inscripcion.id}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="nombreCurso">
+              <th mat-header-cell *matHeaderCellDef> Nombre Curso</th>
+              <td mat-cell *matCellDef="let usuario"> {{ usuario | usuarioNombreCompleto }} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="nombreAlumno">
+              <th mat-header-cell *matHeaderCellDef> nombre Alumno </th>
+              <!--<td color="orange" appResaltado mat-cell *matCellDef="let usuario"> {{usuario.email}} </td>-->
+              <td mat-cell *matCellDef="let usuario"> {{usuario.email}} </td>
+            </ng-container>
+          
+            <!-- Acciones Column -->
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let usuario">
+                    <!--<button (click)="mostrarDetalles(usuario.id)" mat-icon-button>
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button (click)="abrirModal(usuario)" mat-icon-button>
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button (click)="eliminar(usuario.id)" mat-icon-button>
+                        <mat-icon>delete</mat-icon>
+                    </button>-->
+                </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
     }
 }
 

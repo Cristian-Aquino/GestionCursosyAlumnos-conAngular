@@ -6,7 +6,7 @@
         <mat-spinner></mat-spinner>
     }
     @else {
-        <button mat-raised-button (click)="abrirModal()">
+        <button [disabled]="(authUsuario$ | async)?.rol != 'ADMIN'" mat-raised-button (click)="abrirModal()">
             <mat-icon>add</mat-icon>
             Crear Usuario
         </button>

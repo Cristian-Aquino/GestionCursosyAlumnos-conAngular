@@ -21,13 +21,16 @@ export class InscripcionesComponent implements OnInit{
   estaCargandoInscripciones$: Observable<boolean>;
 
   inscripcionForm: FormGroup;
+  displayedColumns: string[] = ['id', 'nombreCurso', 'nombreAlumno'];
+  dataSource: Inscripcion[] = [];
+  estaCargando = false;
 
 
   constructor(private store: Store, private formBuilder: FormBuilder){
 
     this.inscripcionForm = this.formBuilder.group({
-      idCurso: [null, [Validators.required]],
-      idUsuario: [null, [Validators.required]],
+      cursoId: [null, [Validators.required]],
+      usuarioId: [null, [Validators.required]],
     })
     this.inscripciones$ = this.store.select(selectInscripciones)
     this.cursosOptions$ = this.store.select(selectCursoOptions)
@@ -38,8 +41,7 @@ export class InscripcionesComponent implements OnInit{
   
   ngOnInit(): void {
     this.store.dispatch(InscripcionActions.cargarInscripcions());
-    this.store.dispatch(InscripcionActions.cargarCursosOptions());
-    this.store.dispatch(InscripcionActions.cargarAlumnosOptions());
+    this.store.dispatch(InscripcionActions.cargarCursosYAlumnosOptions());
   }
 
   onSubmit(): void{
