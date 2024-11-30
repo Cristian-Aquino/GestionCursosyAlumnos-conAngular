@@ -30,7 +30,6 @@
       "password": "bccEFgUp",
       "token": "2AkJL3PDgQStUfPUfMvQ"
     },
-
     {
       "id": "y17B",
       "nombre": "Lucas",
@@ -41,7 +40,6 @@
       "password": "KPUvCy2Bi1",
       "token": "eCDyfbqncKfRkASvgcmx"
     },
-
     {
       "id": "75pn",
       "nombre": "Jose",
@@ -52,7 +50,6 @@
       "password": "kMVHceWhUe",
       "token": "YejYzH5Q4vAawq8EY3Kk"
     },
-
     {
       "id": "9E8V",
       "nombre": "Martina",
@@ -63,7 +60,6 @@
       "password": "XXaXKPxcHg",
       "token": "YdfkHL1WTzWMV4kR6WQp"
     },
-
     {
       "id": "a9JH",
       "nombre": "Gisela",
@@ -74,7 +70,6 @@
       "password": "89BXgjn3YY",
       "token": "3vYJNqcVJe0Uw7vVK35z"
     },
-
     {
       "id": "k7un",
       "nombre": "Martin",
@@ -85,7 +80,6 @@
       "password": "gHndd1LK1m",
       "token": "D7VJpQq6Fid3jWHd148K"
     },
-
     {
       "id": "0Mtg",
       "nombre": "Alexis",
@@ -96,7 +90,6 @@
       "password": "iZxQCz8V01",
       "token": "K7Y0BzSxtJGcwCAnb5yR"
     },
-
     {
       "id": "wNmy",
       "nombre": "Luz",
@@ -107,7 +100,6 @@
       "password": "zcdPGci2u3",
       "token": "J9gTaqMFdF6VUtmKGpnD"
     },
-
     {
       "id": "ZFaT",
       "nombre": "Arturo",
@@ -118,9 +110,6 @@
       "password": "kMVHceWhUe",
       "token": "BvfUtPi4kxUPCjE0FJXp"
     }
-
-
-
   ],
   "cursos": [
     {
@@ -173,6 +162,11 @@
       "id": "cd3a",
       "cursoId": "3fSc",
       "usuarioId": "Fcna"
+    },
+    {
+      "id": "7v1K",
+      "cursoId": "sdK3",
+      "usuarioId": "0Mtg"
     }
   ]
 }

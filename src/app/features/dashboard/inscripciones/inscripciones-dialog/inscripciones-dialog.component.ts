@@ -16,7 +16,7 @@ interface InscripcionDialogData{
 @Component({
   selector: 'app-inscripciones-dialog',
   templateUrl: './inscripciones-dialog.component.html',
-  //styleUrl: './usuario-dialog.component.scss'
+  styleUrl: './inscripciones-dialog.component.scss'
 })
 export class InscripcionesDialogComponent {
   

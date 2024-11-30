@@ -9,7 +9,7 @@
             <h2>Tabla Usuarios</h2>
             <button class="btn-agregar" mat-raised-button (click)="abrirModal()">
                 <mat-icon>add</mat-icon>
-                Crear Usuario
+                Crear Usuario {{ rolUsuario}}
             </button>
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                 <!-- Position Column -->
@@ -98,15 +98,8 @@
                         <button (click)="mostrarDetalles(usuario.id)" mat-icon-button>
                             <mat-icon>visibility</mat-icon>
                         </button>
-                        <button (click)="abrirModal(usuario)" mat-icon-button>
-                            <mat-icon>edit</mat-icon>
-                        </button>
-                        <button (click)="eliminar(usuario.id)" mat-icon-button>
-                            <mat-icon>delete</mat-icon>
-                        </button>
                     </td>
                   </ng-container>
-              
                 <tr mat-header-row *matHeaderRowDef="columnasTablaAlumnos"></tr>
                 <tr mat-row *matRowDef="let row; columns: columnasTablaAlumnos;"></tr>
             </table>

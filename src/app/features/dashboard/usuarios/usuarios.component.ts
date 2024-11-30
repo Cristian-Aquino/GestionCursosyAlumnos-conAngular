@@ -20,6 +20,7 @@ export class UsuariosComponent implements OnInit{
   esAdmin = false;
 
   authUsuario$: Observable<Usuario | null>
+  rolUsuario: string;
 
   constructor(
     private matDialog: MatDialog, 
@@ -29,26 +30,40 @@ export class UsuariosComponent implements OnInit{
     private authServicio: AuthService
   ) {
     this.authUsuario$ = this.authServicio.authUsuario$;
+    this.rolUsuario = this.authServicio.rolUsuario;
   }
 
   ngOnInit(): void {
-      this.cargarUsuarios();
+    this.cargarUsuarios(this.rolUsuario);
   }
 
-  cargarUsuarios(): void{
-    this.estaCargando = true;
-    this.usuariosService.getUsuarios().subscribe({
-      next: (usuarios) => {
-        this.dataSource = usuarios;
-      },
-      error: () => {
-        this.estaCargando = false;
-      },
-      complete: () => {
-        this.estaCargando = false;
-      }
-
-    })
+  cargarUsuarios(rolUsuario?: string): void{
+    if(rolUsuario == "ADMIN"){
+      this.estaCargando = true;
+      this.usuariosService.getUsuarios().subscribe({
+        next: (usuarios) => {
+          this.dataSource = usuarios;
+        },
+        error: () => {
+          this.estaCargando = false;
+        },
+        complete: () => {
+          this.estaCargando = false;
+        }})
+    }
+    else{
+      this.estaCargando = true;
+      this.usuariosService.getAlumnos().subscribe({
+        next: (usuarios) => {
+          this.dataSource = usuarios;
+        },
+        error: () => {
+          this.estaCargando = false;
+        },
+        complete: () => {
+          this.estaCargando = false;
+        }})
+    }
   }
 
   cargarAlumnos(): void{

@@ -25,13 +25,11 @@ export class CursosService {
     }
 
     actualizarCursoPorId(id: string, actualizar: Partial<Curso>){
-        
         return this.httpClient.patch<Curso>(`${this.baseURL}/cursos/${id}`, actualizar).pipe(concatMap(
             () => this.getCursos()));
     }
 
     removerCursoPorId(id: string): Observable<Curso[]>{
-        
         return this.httpClient.delete<Curso>(`${this.baseURL}/cursos/${id}`).pipe(concatMap(
             () => this.getCursos()));
       }

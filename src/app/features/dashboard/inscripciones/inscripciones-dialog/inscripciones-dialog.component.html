@@ -1,8 +1,8 @@
 <h1 mat-dialog-title>Inscribir un Alumno</h1>
 <div mat-dialog-content>
-    <div>
+    <div class="formulario">
         <form [formGroup]="inscripcionForm">
-            <mat-form-field>
+            <mat-form-field class="casilla">
                 <mat-label>Curso</mat-label>
                 <mat-select formControlName="cursoId">
                     <mat-option [value]="curso.id" *ngFor="let curso of cursosOptions$ | async">
@@ -10,7 +10,7 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field class="casilla">
                 <mat-label>Alumno</mat-label>
                 <mat-select formControlName="usuarioId">
                     <mat-option [value]="usuario.id" *ngFor="let usuario of usuariosOptions$ | async">

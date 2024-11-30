@@ -14,7 +14,7 @@ import { InscripcionesDialogComponent } from './inscripciones-dialog/inscripcion
 @NgModule({
   declarations: [
     InscripcionesComponent,
-    InscripcionesDialogComponent
+    InscripcionesDialogComponent,
   ],
   imports: [
     CommonModule,

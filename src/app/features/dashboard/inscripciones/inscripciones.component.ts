@@ -52,7 +52,6 @@ export class InscripcionesComponent implements OnInit{
       }
     })
   }
-  
 
   cargarInscripciones(): void{
     this.inscripcionServicio.getInscripciones().subscribe({

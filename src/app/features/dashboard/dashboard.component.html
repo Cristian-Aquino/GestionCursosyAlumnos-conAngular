@@ -2,8 +2,11 @@
     <!-- MENU IZQUIERDA -->
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <mat-nav-list>
-        <a routerLink="inicio" routerLinkActive #inicioLink="routerLinkActive" [activated]="inicioLink.isActive" mat-list-item>Inicio</a>
-        <a routerLink="usuarios" routerLinkActive #alumnosLink="routerLinkActive" [activated]="alumnosLink.isActive" mat-list-item>Alumnos</a>
+        <a routerLink="inicio" routerLinkActive #inicioLink="routerLinkActive" [activated]="inicioLink.isActive" mat-list-item> Inicio</a>
+        <a routerLink="usuarios" routerLinkActive #alumnosLink="routerLinkActive" [activated]="alumnosLink.isActive" mat-list-item>
+          @if( (authUsuario$ | async)?.rol == 'ADMIN'){Usuarios}
+          @else {Alumnos}
+        </a>
         <a routerLink="cursos" routerLinkActive #cursosLink="routerLinkActive" [activated]="cursosLink.isActive" mat-list-item>Cursos</a>
         <a routerLink="clases" routerLinkActive #clasesLink="routerLinkActive" [activated]="clasesLink.isActive" mat-list-item>Clases</a>
         <a routerLink="inscripciones" routerLinkActive #inscripcionesLink="routerLinkActive" [activated]="inscripcionesLink.isActive" mat-list-item>Inscripciones</a>
@@ -22,11 +25,10 @@
                 </button>
                 <span>Mi Aplicacion</span>
               </div>
-
-              <!--<div *ngIf="authUsuario$ | async; let authUsuario">
-                <p>{{ authUsuario.nombre }} {{ authUsuario.apellido }}</p>
-              </div>-->
-            </div>            
+            </div>
+            <div *ngIf="authUsuario$ | async; let authUsuario" class="nombre-usuario">
+              <p>{{ authUsuario.nombre }} {{ authUsuario.apellido }}</p>
+            </div>
         </mat-toolbar>
 
         <router-outlet/>

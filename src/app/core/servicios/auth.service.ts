@@ -16,6 +16,7 @@ export class AuthService{
 
     //private _authUsuario$ = new BehaviorSubject<null | Usuario>(null);
     public authUsuario$: Observable<Usuario | null>;
+    public rolUsuario: string;
 
     private baseURL = environment.ApiBaseURL;
 
@@ -24,6 +25,7 @@ export class AuthService{
                 private store: Store
             ){
                 this.authUsuario$ = this.store.select(selectAutenticacionUsuario);
+                this.rolUsuario = "";
             }
 
     private handleAutenticacion(usuarios: Usuario[]): Usuario | null {
@@ -45,6 +47,7 @@ export class AuthService{
             map((usuarios) => {
                 const usuario = this.handleAutenticacion(usuarios);
                 if(usuario){
+                    this.rolUsuario = usuario.rol;
                     return usuario;
                 }
                 else{

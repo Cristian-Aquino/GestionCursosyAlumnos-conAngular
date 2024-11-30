@@ -3,6 +3,10 @@ import { CursosService } from '../../../core/servicios/cursos.service';
 import { Curso } from './modelos';
 import { CursosDialogComponent } from './cursos-dialog/cursos-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { Usuario } from '../usuarios/modelos';
+import { AuthService } from '../../../core/servicios/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cursos',
@@ -13,10 +17,17 @@ export class CursosComponent implements OnInit{
   displayedColumns = ['id', 'nombre', 'cantidadClases', 'fechaCreacion', 'acciones'];
   cursos: Curso[] = []
 
+  authUsuario$: Observable<Usuario | null>
+
   constructor(
     private cursosServicio: CursosService,
-    private matDialog: MatDialog, 
-  ) {}
+    private matDialog: MatDialog,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private authServicio: AuthService
+  ) {
+    this.authUsuario$ = this.authServicio.authUsuario$;
+  }
 
   ngOnInit(): void {
     this.cargarCursos();
@@ -76,5 +87,9 @@ export class CursosComponent implements OnInit{
         console.log(error)
       }
     })
+  }
+
+  mostrarDetalles(id: string): void{
+    this.router.navigate([id, 'detalle'], {relativeTo: this.activatedRoute})
   }
 }
